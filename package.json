@@ -5,5 +5,12 @@
   "main": "index.html",
   "license": "MIT",
   "repository": "https://github.com/michael-hamilton/z80.git",
-  "author": "Michael Hamilton <michaelhamilton626@gmail.com>"
+  "author": "Michael Hamilton <michaelhamilton626@gmail.com>",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.2"
+  }
 }

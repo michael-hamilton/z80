@@ -4,5 +4,9 @@ node_modules
 # IDE
 .idea
 
+# Bundler
+.cache
+/dist
+
 # Logs
 *.log

@@ -1,0 +1,7 @@
+{
+  "name": "z80",
+  "version": "0.0.1",
+  "description": "A Javascript emulated Z80 CPU.",
+  "main": "index.html",
+  "license": "MIT"
+}

@@ -1,3 +1,8 @@
+/*
+ * Z80 CPU Emulator
+ * © 2019 Michael Hamilton
+ */
+
 class z80 {
   constructor() {
     this.registers = {
@@ -19,6 +24,7 @@ class z80 {
     this.isReset = false;
     this.t = 0;
 
+    // Just for testing
     this.memory = [
       0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
       0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -113,8 +119,6 @@ class z80 {
       case 0x7f:
         r.a = r.a;
         break;
-
-
 
       // add a,b
       case 0x80:

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import z80 from '../src/z80';
-import styles from './debugger.scss';
+import z80 from '../z80';
+import './debugger.scss';
 
 const ControlButton = props => <p><button onClick={props.onClick} >{ props.label }</button>{props.value ? ` - ${ props.value }` : ``}</p>;
 
-const ValueList = props => Object.keys(props.items).map(item => <li key={item}>{item} - 0x{props.items[item].toString(16)}</li>)
+const ValueList = props => Object.keys(props.items).map(item => <li key={item}>{item} - 0x{props.items[item].toString(16)}</li>);
 
 export default class Debugger extends Component {
   constructor(props) {

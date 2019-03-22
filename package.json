@@ -7,10 +7,15 @@
   "repository": "https://github.com/michael-hamilton/z80.git",
   "author": "Michael Hamilton <michaelhamilton626@gmail.com>",
   "scripts": {
-    "dev": "parcel index.html"
+    "debug": "parcel debugger/debugger.html"
   },
-  "dependencies": {},
+  "dependencies": {
+    "src": "^1.1.2"
+  },
   "devDependencies": {
-    "parcel-bundler": "^1.12.2"
+    "parcel-bundler": "^1.12.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "sass": "^1.17.3"
   }
 }

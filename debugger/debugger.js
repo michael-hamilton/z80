@@ -163,7 +163,7 @@ export default class Debugger extends Component {
                   label={this.state.clock.running ? 'Stop Clock' : 'Start Clock'}
                   active={this.state.clock.running}
                 />
-                <div>
+                <div className='slider'>
                   <input disabled={this.state.clock.running} type="range" min="1" max="25" value={this.state.clock.rate} className="slider" onChange={(e) => this.changeClockRate(e.target.value)} />
                   <span>{this.state.clock.rate}hz</span>
                 </div>

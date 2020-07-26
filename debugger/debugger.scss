@@ -80,3 +80,14 @@ button {
     color: white;
   }
 }
+
+.slider {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  span {
+    margin-top: -5px;
+  }
+}

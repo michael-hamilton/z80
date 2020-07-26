@@ -1,10 +1,82 @@
 *, * * {
   margin: 0;
   padding: 0;
-  postiion: relative;
+  position: relative;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+#root {
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: #373737;
+  padding: 20px;
+  width: 100%;
+
+  h1 {
+    color: white;
+  }
+}
+
+.debugger {
+  padding: 10px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
 }
 
 .cpuStateWrapper {
   border: 1px solid #373737;
-  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+
+  div {
+    margin: 10px;
+  }
+}
+
+.value-list-item {
+  list-style: none;
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+.active {
+  color: red;
+}
+
+.control-section {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  * {
+    margin: 5px;
+  }
+}
+
+button {
+  padding: 10px;
+  min-width: 100px;
+
+  &.active {
+    background-color: darkgreen;
+    color: white;
+  }
 }

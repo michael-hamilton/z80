@@ -4,11 +4,11 @@
  */
 
 class z80 {
-  constructor() {
+  constructor(memory) {
     this.registers = {
       a: 0x00,
       b: 0x00,
-      c: 0x08,
+      c: 0x00,
       d: 0x00,
       e: 0x00,
       h: 0x00,
@@ -23,21 +23,19 @@ class z80 {
 
     this.isReset = false;
     this.t = 0;
+    this.m = 0;
 
-    // Just for testing
-    this.memory = [
-      0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-    ];
+    this.memory = memory;
   }
 
   reset() {
+    this.registers.a = 0x00;
+    this.registers.b = 0x00;
+    this.registers.c = 0x00;
+    this.registers.d = 0x00;
+    this.registers.e = 0x00;
+    this.registers.h = 0x00;
+    this.registers.l = 0x00
     this.registers.pc = 0x0000;
     this.t = 0;
   }
@@ -55,14 +53,31 @@ class z80 {
   }
 
   stepClock() {
-    const opcode = this.readMemory(this.registers.pc);
-    this.executeOpcode(opcode);
-    this.t = this.t + 1;
-    this.registers.pc = this.registers.pc + 0x01;
+    if (this.m === 0) {
+      const opcode = this.readMemory(this.registers.pc);
+      this.executeOpcode(opcode);
+      this.registers.pc = this.registers.pc + 0x01
+    }
+
+    if (this.t < this.m -1) {
+      this.t = this.t + 1;
+    }
+    else {
+      this.t = 0
+      this.m = 0;
+    }
   }
 
   getT() {
     return this.t;
+  }
+
+  getM() {
+    return this.m;
+  }
+
+  getPC() {
+    return this.registers.pc;
   }
 
   readMemory(address) {
@@ -75,9 +90,23 @@ class z80 {
 
     switch(opcode) {
 
+      // ld b,*
+      case 0x06:
+        this.m = 7;
+        r.b = this.readMemory(r.pc);
+        r.pc = r.pc + 0x02;
+        break;
+
       // ld a(bc)
       case 0x0a:
         r.a = this.readMemory(r.b<<8 | r.c);
+        break;
+
+      // ld c,*
+      case 0x0e:
+        this.m = 7;
+        r.c = this.readMemory(r.pc);
+        r.pc = r.pc + 0x02;
         break;
 
       // ld a,b

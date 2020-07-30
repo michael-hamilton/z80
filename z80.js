@@ -1,6 +1,6 @@
 /*
  * Z80 CPU Emulator
- * © 2019 Michael Hamilton
+ * © 2019-2020 Michael Hamilton
  */
 
 class z80 {
@@ -22,8 +22,10 @@ class z80 {
     };
 
     this.isReset = false;
-    this.t = 0;
-    this.m = 0;
+
+    // Used for cycle accuracy
+    this.t = 0; // time cycles
+    this.m = 0; // machine cycles
 
     this.memory = memory;
   }
@@ -52,7 +54,7 @@ class z80 {
     return this.busses.address;
   }
 
-  stepClock() {
+  handleClockStep() {
     if (this.m === 0) {
       const opcode = this.readMemory(this.registers.pc);
       this.executeOpcode(opcode);
@@ -99,6 +101,7 @@ class z80 {
 
       // ld a(bc)
       case 0x0a:
+        this.m = 7;
         r.a = this.readMemory(r.b<<8 | r.c);
         break;
 

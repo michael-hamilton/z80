@@ -64,7 +64,7 @@ export default class Debugger extends Component {
   }
 
   stepClock() {
-    this.state.cpu.stepClock();
+    this.state.cpu.handleClockStep();
     this.setState({
       cycles: this.state.cycles + 1
     });

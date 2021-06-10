@@ -5,4 +5,4 @@ A Z80 CPU emulator written in Javascript.
 A debugger is included for interacting with the emulated Z80.  Run `yarn debug` and navigate to `http://localhost:1234` in a browser to use thedebugger.
 
 ---
-A work in progress by [Michael Hamilton](https://github.com/michael-hamilton)
+A work in progress by [Mike Hamilton](http://miska.me)

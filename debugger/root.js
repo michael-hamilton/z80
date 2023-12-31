@@ -1,8 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Debugger from './debugger';
 
-render(
-  <Debugger/>,
-  document.getElementById('root')
-);
+const root = createRoot(document.getElementById('root'));
+
+root.render(<Debugger />);

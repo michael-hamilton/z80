@@ -6,6 +6,7 @@ node_modules
 
 # Bundler
 .cache
+.parcel-cache
 /dist
 
 # Logs
